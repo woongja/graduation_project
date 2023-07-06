@@ -32,7 +32,7 @@ class _CameraPageState extends State<CameraPage> {
   initializeCamera() async {
     try {
       //첫 번째 카메라로 카메라 설정하기
-      controller = CameraController(_cameras[0], ResolutionPreset.max);
+      controller = CameraController(_cameras[0], ResolutionPreset.veryHigh);
       //카메라 초기화
       await controller.initialize();
 
@@ -64,6 +64,16 @@ class _CameraPageState extends State<CameraPage> {
     if (!controller.value.isInitialized) {
       return Container();
     }
-    return CameraPreview(controller);
+    return MaterialApp(
+      //카메라 보여주기
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Cam'),
+        ),
+        body: CameraPreview(
+          controller,
+        ),
+      ),
+    );
   }
 }

@@ -17,7 +17,10 @@ class FirstPage extends StatelessWidget {
           centerTitle: true,
           leading: IconButton(
             onPressed: () {
-              CameraPage();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CameraPage()),
+              );
               print('cam');
             },
             icon: Icon(
@@ -43,7 +46,13 @@ class FirstPage extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingPage()),
+                );
+                print('setting_page');
+              },
               icon: Icon(
                 Icons.settings,
                 color: Colors.white,
