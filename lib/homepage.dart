@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Camera_Page.dart';
-import 'Setting_page.dart';
+import 'camera_page.dart';
+import 'setting_page.dart';
 import 'FirstPage.dart';
 
 class HomePage extends StatefulWidget {

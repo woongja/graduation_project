@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'FirstPage.dart';
 
 late List<CameraDescription> _cameras;
 
@@ -9,6 +10,7 @@ Future<void> main() async {
 
   //핸드폰에 있는 카메라들 가져오기
   _cameras = await availableCameras();
+  runApp(CameraPage());
 }
 
 class CameraPage extends StatefulWidget {
