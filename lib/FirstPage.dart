@@ -1,8 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'camera_page.dart';
 import 'setting_page.dart';
 import 'history_page.dart';
+
+final brandItem = {
+  "brand": [
+    {"image": "assets/images/adidas.png", "name": "adidas"},
+    {"image": "assets/images/gucci.png", "name": "gucci"},
+    {"image": "assets/images/chanel.png", "name": "chanel"},
+    {"image": "assets/images/musinsa.png", "name": "musinsa"},
+    {"image": "assets/images/nike.png", "name": "nike"},
+    {"image": "assets/images/vans.png", "name": "vans"},
+  ]
+};
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -67,7 +77,45 @@ class FirstPage extends StatelessWidget {
             ),
           ],
         ),
-        body: SafeArea(child: Container()),
+        body: SafeArea(
+          child: Expanded(
+            child: ListView(children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Flexible(
+                        //width: MediaQuery.of(context).size.width /2 로 구현 가능
+                        flex: 5,
+                        child: Center(
+                          child: Container(
+                            height: 320,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 6,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 160,
+                              color: Colors.deepOrange,
+                            ),
+                            Container(height: 160, color: Colors.yellow)
+                          ],
+                        ),
+                      ),
+                      Divider(),
+                      Container(),
+                    ],
+                  ),
+                ],
+              ),
+            ]),
+          ),
+        ),
       ),
     );
   }

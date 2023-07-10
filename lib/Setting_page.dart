@@ -10,36 +10,47 @@ class SettingPage extends StatelessWidget {
     return MaterialApp(
       title: 'setting_page',
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black87,
-          elevation: 10,
-          centerTitle: true,
-          title: Text(
-            'setting',
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage(''),
+                  backgroundColor: Colors.white,
+                ),
+                accountName: Text("WJ"),
+                accountEmail: Text('wcn4457@gmail.com'),
+                onDetailsPressed: () {
+                  print("arrow is click");
+                },
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.person_2_outlined,
+                ),
+                title: Text('내 정보'),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                ),
+                title: Text('내 정보'),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.question_answer_outlined,
+                ),
+                title: Text('내 정보'),
+              ),
+            ],
           ),
-          leading: IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const FirstPage()),
-              );
-            },
-            icon: Icon(Icons.keyboard_backspace),
-          ),
-        ),
-        body: Column(
-          children: [
-            SizedBox(height: 10),
-            Container(
-              height: 50,
-              color: Colors.red,
-            ),
-            Divider(),
-            Container(
-              height: 50,
-              color: Colors.yellow,
-            ),
-          ],
         ),
       ),
     );
