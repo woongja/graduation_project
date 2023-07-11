@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_app/FirstPage.dart';
 
@@ -7,50 +6,47 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'setting_page',
-      home: Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            children: [
-              UserAccountsDrawerHeader(
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage(''),
-                  backgroundColor: Colors.white,
-                ),
-                accountName: Text("WJ"),
-                accountEmail: Text('wcn4457@gmail.com'),
-                onDetailsPressed: () {
-                  print("arrow is click");
-                },
-                decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(40),
-                    bottomRight: Radius.circular(40),
-                  ),
+    return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/adidas.png'),
+                backgroundColor: Colors.white,
+              ),
+              accountName: Text("WJ"),
+              accountEmail: Text('wcn4457@gmail.com'),
+              onDetailsPressed: () {
+                print("arrow is click");
+              },
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
                 ),
               ),
-              ListTile(
-                leading: Icon(
-                  Icons.person_2_outlined,
-                ),
-                title: Text('내 정보'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.person_2_outlined,
               ),
-              ListTile(
-                leading: Icon(
-                  Icons.settings,
-                ),
-                title: Text('내 정보'),
+              title: Text('내 정보'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
               ),
-              ListTile(
-                leading: Icon(
-                  Icons.question_answer_outlined,
-                ),
-                title: Text('내 정보'),
+              title: Text('내 정보'),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.question_answer_outlined,
               ),
-            ],
-          ),
+              title: Text('내 정보'),
+            ),
+          ],
         ),
       ),
     );

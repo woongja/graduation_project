@@ -1,14 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'FirstPage.dart';
-import 'HomePage.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({
     Key? key,
   }) : super(key: key);
-
+  @override
   State<LandingPage> createState() => _LandingPageState();
 }
 

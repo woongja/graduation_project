@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'camera_page.dart';
 import 'setting_page.dart';
 import 'history_page.dart';
@@ -13,6 +14,7 @@ final brandItem = {
     {"image": "assets/images/vans.png", "name": "vans"},
   ]
 };
+//페이지 구성 상단 중단 하단 or 상단 중단 나눠서 widget으로 개발 후 scaffold에 구현해주기
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -30,7 +32,8 @@ class FirstPage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CameraPage()),
+                PageTransition(
+                    type: PageTransitionType.leftToRight, child: CameraPage()),
               );
               print('cam');
             },
@@ -47,35 +50,55 @@ class FirstPage extends StatelessWidget {
               fontSize: 32,
             ),
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HistoryPage()),
-                );
-              },
-              icon: Icon(
-                Icons.settings_backup_restore_outlined,
-                color: Colors.white,
-                size: 30,
+        ),
+        endDrawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/adidas.png'),
+                  backgroundColor: Colors.white,
+                ),
+                accountName: Text("WJ"),
+                accountEmail: Text('wcn4457@gmail.com'),
+                onDetailsPressed: () {
+                  print("arrow is click");
+                },
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                  ),
+                ),
               ),
-            ),
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SettingPage()),
-                );
-                print('setting_page');
-              },
-              icon: Icon(
-                Icons.settings,
-                color: Colors.white,
-                size: 30,
+              ListTile(
+                leading: Icon(
+                  Icons.person_2_outlined,
+                ),
+                title: Text('Profile'),
               ),
-            ),
-          ],
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                ),
+                title: Text('setting'),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.favorite,
+                ),
+                title: Text('Wish List'),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.question_answer_outlined,
+                ),
+                title: Text('QnA'),
+              ),
+            ],
+          ),
         ),
         body: SafeArea(
           child: Expanded(
@@ -115,6 +138,18 @@ class FirstPage extends StatelessWidget {
               ),
             ]),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                  type: PageTransitionType.bottomToTop, child: HistoryPage()),
+            );
+            print('cam');
+          },
+          backgroundColor: Colors.black87,
+          child: Icon(Icons.history),
         ),
       ),
     );
