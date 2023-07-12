@@ -4,16 +4,154 @@ import 'camera_page.dart';
 import 'setting_page.dart';
 import 'history_page.dart';
 
-final brandItem = {
-  "brand": [
-    {"image": "assets/images/adidas.png", "name": "adidas"},
-    {"image": "assets/images/gucci.png", "name": "gucci"},
-    {"image": "assets/images/chanel.png", "name": "chanel"},
-    {"image": "assets/images/musinsa.png", "name": "musinsa"},
-    {"image": "assets/images/nike.png", "name": "nike"},
-    {"image": "assets/images/vans.png", "name": "vans"},
-  ]
-};
+Widget _brandtest(BuildContext context) {
+  final List<String> brand_name = [
+    'adidas',
+    'gucci',
+    'chanel',
+    'musinsa',
+    'nike',
+    'vans'
+  ];
+  final List<String> brand_url = [
+    'assets/images/adidas.png',
+    'assets/images/gucci.png',
+    'assets/images/chanel.png',
+    'assets/images/musinsa.png',
+    'assets/images/nike.png',
+    'assets/images/vans.png'
+  ];
+  return GridView.builder(
+    itemCount: brand_name.length,
+    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 3, //1 개의 행에 보여줄 item 개수
+      childAspectRatio: 1 / 2, //item 의 가로 1, 세로 2 의 비율
+      mainAxisSpacing: 10, //수평 Padding
+      crossAxisSpacing: 10, //수직 Padding
+    ),
+    itemBuilder: (BuildContext context, int index) {
+      return Container(
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            image: DecorationImage(
+              image: AssetImage(brand_url[index]),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(child: Text('순서대로 ${brand_name[index]}')));
+    },
+  );
+}
+
+Widget listviewSeperate() {
+  return ListView.separated(
+      scrollDirection:
+          Axis.vertical, //vertical : 수직으로 나열 / horizontal : 수평으로 나열
+      separatorBuilder: (BuildContext context, int index) => const Divider(
+            color: Colors.black,
+          ), //separatorBuilder : item과 item 사이에 그려질 위젯 (개수는 itemCount -1 이 된다)
+      itemCount: 7, //리스트의 개수
+      itemBuilder: (BuildContext context, int index) {
+        //리스트의 반목문 항목 형성
+        return Container(
+          height: 70,
+          color: Colors.pink[index * 100],
+          alignment: Alignment.center,
+          child: Text('item : $index'),
+        );
+      });
+}
+
+Widget _brandList() {
+  final List<String> brand_name = <String>[
+    'adidas',
+    'gucci',
+    'chanel',
+    'musinsa',
+    'nike',
+    'vans'
+  ];
+  final List<String> brand_url = <String>[
+    'assets/images/adidas.png',
+    'assets/images/gucci.png',
+    'assets/images/chanel.png',
+    'assets/images/musinsa.png',
+    'assets/images/nike.png',
+    'assets/images/vans.png'
+  ];
+  return Column(
+    children: <Widget>[
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.square_foot_outlined,
+                size: 40,
+              ),
+              Text('data'),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.square_foot_outlined,
+                size: 40,
+              ),
+              Text('data'),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.square_foot_outlined,
+                size: 40,
+              ),
+              Text('data'),
+            ],
+          ),
+        ],
+      ),
+      SizedBox(
+        height: 30,
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.square_foot_outlined,
+                size: 40,
+              ),
+              Text('data'),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.square_foot_outlined,
+                size: 40,
+              ),
+              Text('data'),
+            ],
+          ),
+          Column(
+            children: <Widget>[
+              Icon(
+                Icons.square_foot_outlined,
+                size: 40,
+              ),
+              Text('data'),
+            ],
+          ),
+        ],
+      ),
+    ],
+  );
+}
 //페이지 구성 상단 중단 하단 or 상단 중단 나눠서 widget으로 개발 후 scaffold에 구현해주기
 
 class FirstPage extends StatelessWidget {
@@ -21,6 +159,19 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const brandData = {
+      'sports': [
+        {'name': 'adidas', 'imgUrl': 'assets/images/adidas.png'},
+        {'name': 'nike', 'imgUrl': 'assets/images/nike.png'},
+      ],
+      'casual': [
+        {'name': 'gucci', 'imgUrl': 'assets/images/gucci.png'},
+        {'name': 'chanel', 'imgUrl': 'assets/images/chanel.png'},
+        {'name': 'musinsa', 'imgUrl': 'assets/images/musinsa.png'},
+        {'name': 'vans', 'imgUrl': 'assets/images/vans.png'},
+      ],
+    };
+
     return MaterialApp(
       title: 'First Page',
       home: Scaffold(
@@ -102,41 +253,70 @@ class FirstPage extends StatelessWidget {
         ),
         body: SafeArea(
           child: Expanded(
-            child: ListView(children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        //width: MediaQuery.of(context).size.width /2 로 구현 가능
-                        flex: 5,
-                        child: Center(
-                          child: Container(
-                            height: 320,
-                            color: Colors.orange,
+            child: ListView(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          //width: MediaQuery.of(context).size.width /2 로 구현 가능
+                          flex: 5,
+                          child: Center(
+                            child: Container(
+                              height: 320,
+                              color: Colors.orange,
+                            ),
                           ),
                         ),
-                      ),
-                      Flexible(
-                        flex: 6,
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 160,
-                              color: Colors.deepOrange,
-                            ),
-                            Container(height: 160, color: Colors.yellow)
-                          ],
+                        Flexible(
+                          flex: 6,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 160,
+                                color: Colors.deepOrange,
+                              ),
+                              Container(height: 160, color: Colors.yellow)
+                            ],
+                          ),
                         ),
-                      ),
-                      Divider(),
-                      Container(),
-                    ],
-                  ),
-                ],
-              ),
-            ]),
+                      ],
+                    ),
+                    Divider(
+                      height: 30,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          height: 100,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              ...brandData['sports']!.map((song) {
+                                String imgUrl = song['imgUrl']!;
+                                String name = song['name']!;
+                                return box(name, imgUrl);
+                              }),
+                            ],
+                          ),
+                        ),
+                        /*Container(
+                          height: 100,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: brand.map((name) {
+                              return box(name, Colors.red);
+                            }).toList(),
+                          ),
+                        ),*/
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -154,4 +334,17 @@ class FirstPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget box(String title, String imgUrl) {
+  return Container(
+    margin: EdgeInsets.all(10),
+    width: 80,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(),
+    child: Text(
+      title,
+      style: TextStyle(color: Colors.white, fontSize: 20),
+    ),
+  );
 }

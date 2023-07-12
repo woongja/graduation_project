@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:photo_app/FirstPage.dart';
 
 class HistoryPage extends StatelessWidget {
@@ -20,10 +21,11 @@ class HistoryPage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const FirstPage()),
+                PageTransition(
+                    type: PageTransitionType.topToBottom, child: FirstPage()),
               );
             },
-            icon: Icon(Icons.keyboard_backspace),
+            icon: Icon(Icons.keyboard_arrow_down),
           ),
         ),
       ),
