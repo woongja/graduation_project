@@ -26,8 +26,8 @@ const productList = [
       "고려생활건강", "더위에 강한", "숨쉬기 편한 마스크"),
 ];
 
-class HistoryPage extends StatelessWidget {
-  const HistoryPage({Key? key}) : super(key: key);
+class BrandPage extends StatelessWidget {
+  const BrandPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +62,13 @@ class HistoryPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  "brand_name",
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                Divider(),
                 Container(
                   color: Colors.blue,
-                  padding: EdgeInsets.only(left: 10, top: 10),
                   child: ListView.separated(
                       itemCount: productList.length,
                       shrinkWrap: true,
@@ -75,11 +79,11 @@ class HistoryPage extends StatelessWidget {
                             Text(
                               "brand_name",
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                                  fontSize: 15, fontWeight: FontWeight.bold),
                             ),
                             Container(
                                 margin: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
+                                    top: 10, left: 10, right: 10),
                                 color: Colors.yellow,
                                 width: 400,
                                 height: 200,

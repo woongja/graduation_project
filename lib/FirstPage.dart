@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 import 'camera_page.dart';
 import 'setting_page.dart';
 import 'history_page.dart';
+import 'brand_page.dart';
 
-Widget brandList(String category) {
+Widget brandList(String category, context) {
   const brandData = {
     'sports': [
       {'name': 'adidas', 'imgUrl': 'assets/images/adidas.png'},
@@ -40,7 +40,7 @@ Widget brandList(String category) {
             ...brandData['$category']!.map((song) {
               String imgUrl = song['imgUrl']!;
               String name = song['name']!;
-              return box(name, imgUrl);
+              return box(name, imgUrl, context);
             }),
           ],
         ),
@@ -56,19 +56,6 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const brandData = {
-      'sports': [
-        {'name': 'adidas', 'imgUrl': 'assets/images/adidas.png'},
-        {'name': 'nike', 'imgUrl': 'assets/images/nike.png'},
-      ],
-      'casual': [
-        {'name': 'gucci', 'imgUrl': 'assets/images/gucci.png'},
-        {'name': 'chanel', 'imgUrl': 'assets/images/chanel.png'},
-        {'name': 'musinsa', 'imgUrl': 'assets/images/musinsa.png'},
-        {'name': 'vans', 'imgUrl': 'assets/images/vans.png'},
-      ],
-    };
-
     return MaterialApp(
       title: 'First Page',
       home: Scaffold(
@@ -149,47 +136,111 @@ class FirstPage extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: Expanded(
-            child: ListView(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Flexible(
-                          //width: MediaQuery.of(context).size.width /2 로 구현 가능
-                          flex: 5,
-                          child: Center(
-                            child: Container(
-                              height: 320,
-                              color: Colors.orange,
+          child: ListView(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Flexible(
+                        //width: MediaQuery.of(context).size.width /2 로 구현 가능
+                        flex: 5,
+                        child: Center(
+                          child: Container(
+                            height: 320,
+                            color: Colors.black54,
+                            child: Center(
+                              child: Container(
+                                margin: EdgeInsets.only(left: 20, right: 20),
+                                color: Colors.white,
+                                height: 240,
+                              ),
                             ),
                           ),
                         ),
-                        Flexible(
-                          flex: 6,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 160,
-                                color: Colors.deepOrange,
+                      ),
+                      Flexible(
+                        flex: 6,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 160,
+                              color: Colors.deepOrange,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin:
+                                        EdgeInsets.only(left: 10, right: 20),
+                                    color: Colors.white,
+                                    height: 120,
+                                    width: 100,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(right: 5),
+                                    color: Colors.white,
+                                    height: 120,
+                                    width: 90,
+                                    child: Container(
+                                      child: Center(
+                                        child: Text(
+                                          'clothes',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Container(height: 160, color: Colors.yellow)
-                            ],
-                          ),
+                            ),
+                            Container(
+                              height: 160,
+                              color: Colors.yellow,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin:
+                                        EdgeInsets.only(left: 10, right: 20),
+                                    color: Colors.white,
+                                    height: 120,
+                                    width: 100,
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(right: 5),
+                                    color: Colors.white,
+                                    height: 120,
+                                    width: 90,
+                                    child: Container(
+                                      child: Center(
+                                        child: Text(
+                                          'pants',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
-                    Divider(
-                      height: 20,
-                    ),
-                    brandList('sports'),
-                    brandList('casual')
-                  ],
-                ),
-              ],
-            ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    height: 20,
+                  ),
+                  brandList('sports', context),
+                  brandList('casual', context)
+                ],
+              ),
+            ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -199,7 +250,7 @@ class FirstPage extends StatelessWidget {
               PageTransition(
                   type: PageTransitionType.bottomToTop, child: HistoryPage()),
             );
-            print('cam');
+            print('history_page');
           },
           backgroundColor: Colors.black87,
           child: Icon(Icons.history),
@@ -209,21 +260,31 @@ class FirstPage extends StatelessWidget {
   }
 }
 
-Widget box(String title, Object imgUrl) {
+Widget box(String title, Object imgUrl, context) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
-      Container(
-        margin: EdgeInsets.only(left: 10, right: 10),
-        width: 80,
-        height: 80,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('$imgUrl'),
-            fit: BoxFit.cover,
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.bottomToTop, child: BrandPage()),
+          );
+          print('brand_page');
+        },
+        child: Container(
+          margin: EdgeInsets.only(left: 10, right: 10),
+          width: 80,
+          height: 80,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('$imgUrl'),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.circular(20),
           ),
-          borderRadius: BorderRadius.circular(20),
         ),
       ),
       Text(
