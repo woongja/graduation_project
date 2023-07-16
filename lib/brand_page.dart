@@ -57,7 +57,7 @@ class BrandPage extends StatelessWidget {
             ),
           ),
           body: Container(
-            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.only(left: 10, right: 10, top: 10),
             color: Colors.red,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,6 +69,7 @@ class BrandPage extends StatelessWidget {
                 Divider(),
                 Container(
                   color: Colors.blue,
+                  padding: EdgeInsets.all(5),
                   child: ListView.separated(
                       itemCount: productList.length,
                       shrinkWrap: true,
@@ -76,13 +77,16 @@ class BrandPage extends StatelessWidget {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "brand_name",
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            Container(
+                              margin: EdgeInsets.only(left: 10, right: 10),
+                              child: Text(
+                                "brand_name",
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ),
                             ),
                             Container(
-                                margin: EdgeInsets.only(
+                                padding: EdgeInsets.only(
                                     top: 10, left: 10, right: 10),
                                 color: Colors.yellow,
                                 width: 400,

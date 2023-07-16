@@ -57,7 +57,7 @@ class HistoryPage extends StatelessWidget {
             ),
           ),
           body: Container(
-            margin: EdgeInsets.all(10),
+            margin: EdgeInsets.only(top: 10, left: 10, right: 10),
             color: Colors.red,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
