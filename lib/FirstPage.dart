@@ -138,107 +138,109 @@ class FirstPage extends StatelessWidget {
         body: SafeArea(
           child: ListView(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        //width: MediaQuery.of(context).size.width /2 로 구현 가능
-                        flex: 5,
-                        child: Center(
-                          child: Container(
-                            height: 320,
-                            color: Colors.black54,
-                            child: Center(
-                              child: Container(
-                                margin: EdgeInsets.only(left: 20, right: 20),
-                                color: Colors.white,
-                                height: 240,
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Flexible(
+                          //width: MediaQuery.of(context).size.width /2 로 구현 가능
+                          flex: 5,
+                          child: Center(
+                            child: Container(
+                              height: 320,
+                              color: Colors.black54,
+                              child: Center(
+                                child: Container(
+                                  margin: EdgeInsets.only(left: 20, right: 20),
+                                  color: Colors.white,
+                                  height: 240,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      Flexible(
-                        flex: 6,
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 160,
-                              color: Colors.deepOrange,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    margin:
-                                        EdgeInsets.only(left: 10, right: 20),
-                                    color: Colors.white,
-                                    height: 120,
-                                    width: 100,
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(right: 5),
-                                    color: Colors.white,
-                                    height: 120,
-                                    width: 90,
-                                    child: Container(
-                                      child: Center(
-                                        child: Text(
-                                          'clothes',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                        Flexible(
+                          flex: 6,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 160,
+                                color: Colors.deepOrange,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin:
+                                          EdgeInsets.only(left: 10, right: 20),
+                                      color: Colors.white,
+                                      height: 120,
+                                      width: 100,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 5),
+                                      color: Colors.white,
+                                      height: 120,
+                                      width: 90,
+                                      child: Container(
+                                        child: Center(
+                                          child: Text(
+                                            'clothes',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              height: 160,
-                              color: Colors.yellow,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    margin:
-                                        EdgeInsets.only(left: 10, right: 20),
-                                    color: Colors.white,
-                                    height: 120,
-                                    width: 100,
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(right: 5),
-                                    color: Colors.white,
-                                    height: 120,
-                                    width: 90,
-                                    child: Container(
-                                      child: Center(
-                                        child: Text(
-                                          'pants',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15,
+                              Container(
+                                height: 160,
+                                color: Colors.yellow,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      margin:
+                                          EdgeInsets.only(left: 10, right: 20),
+                                      color: Colors.white,
+                                      height: 120,
+                                      width: 100,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 5),
+                                      color: Colors.white,
+                                      height: 120,
+                                      width: 90,
+                                      child: Container(
+                                        child: Center(
+                                          child: Text(
+                                            'pants',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Divider(
-                    height: 20,
-                  ),
-                  brandList('sports', context),
-                  brandList('casual', context)
-                ],
+                      ],
+                    ),
+                    Divider(
+                      height: 20,
+                    ),
+                    brandList('sports', context),
+                    brandList('casual', context)
+                  ],
+                ),
               ),
             ],
           ),

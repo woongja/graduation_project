@@ -56,64 +56,67 @@ class BrandPage extends StatelessWidget {
               icon: Icon(Icons.keyboard_arrow_down),
             ),
           ),
-          body: Container(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 10),
-            color: Colors.red,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "brand_name",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-                Divider(),
-                Container(
-                  color: Colors.blue,
-                  padding: EdgeInsets.all(5),
-                  child: ListView.separated(
-                      itemCount: productList.length,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              child: Text(
-                                "brand_name",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+              color: Colors.red,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "brand_name",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  Divider(),
+                  Container(
+                    color: Colors.blue,
+                    padding: EdgeInsets.all(5),
+                    child: ListView.separated(
+                        itemCount: productList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(left: 10, right: 10),
+                                child: Text(
+                                  "brand_name",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
-                            ),
-                            Container(
-                                padding: EdgeInsets.only(
-                                    top: 10, left: 10, right: 10),
-                                color: Colors.yellow,
-                                width: 400,
-                                height: 200,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      margin:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      color: Colors.black38,
-                                      width: 150,
-                                      height: 160,
-                                    ),
-                                    Container(
-                                      color: Colors.black38,
-                                      height: 160,
-                                    ),
-                                  ],
-                                )),
-                          ],
-                        );
-                      },
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Divider(thickness: 3);
-                      }),
-                ),
-              ],
+                              Container(
+                                  padding: EdgeInsets.only(
+                                      top: 10, left: 10, right: 10),
+                                  color: Colors.yellow,
+                                  width: 400,
+                                  height: 200,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10, right: 10),
+                                        color: Colors.black38,
+                                        width: 150,
+                                        height: 160,
+                                      ),
+                                      Container(
+                                        color: Colors.black38,
+                                        height: 160,
+                                      ),
+                                    ],
+                                  )),
+                            ],
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return Divider(thickness: 3);
+                        }),
+                  ),
+                ],
+              ),
             ),
           )),
     );

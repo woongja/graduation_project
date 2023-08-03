@@ -56,56 +56,58 @@ class HistoryPage extends StatelessWidget {
               icon: Icon(Icons.keyboard_arrow_down),
             ),
           ),
-          body: Container(
-            margin: EdgeInsets.only(top: 10, left: 10, right: 10),
-            color: Colors.red,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  color: Colors.blue,
-                  padding: EdgeInsets.only(left: 10, top: 10),
-                  child: ListView.separated(
-                      itemCount: productList.length,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "brand_name",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            ),
-                            Container(
-                                margin: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                color: Colors.yellow,
-                                width: 400,
-                                height: 200,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      margin:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      color: Colors.black38,
-                                      width: 150,
-                                      height: 160,
-                                    ),
-                                    Container(
-                                      color: Colors.black38,
-                                      height: 160,
-                                    ),
-                                  ],
-                                )),
-                          ],
-                        );
-                      },
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Divider(thickness: 3);
-                      }),
-                ),
-              ],
+          body: SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.only(top: 10, left: 10, right: 10),
+              color: Colors.red,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    color: Colors.blue,
+                    padding: EdgeInsets.only(left: 10, top: 10),
+                    child: ListView.separated(
+                        itemCount: productList.length,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "brand_name",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              Container(
+                                  margin: EdgeInsets.only(
+                                      left: 10, right: 10, top: 10),
+                                  color: Colors.yellow,
+                                  width: 400,
+                                  height: 200,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 10, right: 10),
+                                        color: Colors.black38,
+                                        width: 150,
+                                        height: 160,
+                                      ),
+                                      Container(
+                                        color: Colors.black38,
+                                        height: 160,
+                                      ),
+                                    ],
+                                  )),
+                            ],
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return Divider(thickness: 3);
+                        }),
+                  ),
+                ],
+              ),
             ),
           )),
     );
