@@ -154,7 +154,7 @@ class FirstPage extends StatelessWidget {
                               child: Center(
                                 child: Container(
                                   margin: EdgeInsets.only(left: 20, right: 20),
-                                  color: Colors.white,
+                                  color: Colors.red,
                                   height: 240,
                                 ),
                               ),

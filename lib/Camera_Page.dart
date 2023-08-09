@@ -1,6 +1,12 @@
 import 'package:camera/camera.dart';
+import 'package:image_picker/image_picker.dart';
 import 'photo_preview.dart';
 import 'package:flutter/material.dart';
+
+final picker = ImagePicker();
+XFile? image; // 카메라로 촬영한 이미지를 저장할 변수
+List<XFile?> multiImage = []; // 갤러리에서 여러 장의 사진을 선택해서 저장할 변수
+List<XFile?> images = []; // 가져온 사진들을 보여주기 위한 변수
 
 class CameraPage extends StatefulWidget {
   const CameraPage({super.key});
@@ -70,11 +76,34 @@ class _CameraPageState extends State<CameraPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(16),
-              child: ElevatedButton(
+              child: TextButton(
                 onPressed: _cameraController != null
                     ? () => _onTakePicture(context)
                     : null,
-                child: const Text('Take a photo'),
+                child: Container(
+                  height: 50,
+                  width: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 3,
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: const Text(
+                      'Take a photo',
+                      style: TextStyle(
+                        fontFamily: 'SDS',
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
