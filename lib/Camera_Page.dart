@@ -18,6 +18,7 @@ class CameraPage extends StatefulWidget {
 class _CameraPageState extends State<CameraPage> {
   CameraController? _cameraController;
   bool _isCameraReady = false;
+
   @override
   void initState() {
     super.initState();

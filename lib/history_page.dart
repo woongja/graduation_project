@@ -50,7 +50,8 @@ class HistoryPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.topToBottom, child: FirstPage()),
+                      type: PageTransitionType.topToBottom,
+                      child: FirstPage('1')),
                 );
               },
               icon: Icon(Icons.keyboard_arrow_down),

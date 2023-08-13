@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
             TabBarView(
               children: [
                 CameraPage(),
-                FirstPage(),
+                FirstPage('1'),
                 SettingPage(),
               ],
             ),

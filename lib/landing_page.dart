@@ -17,7 +17,7 @@ class _LandingPageState extends State<LandingPage> {
     Timer(Duration(seconds: 3), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const FirstPage()),
+        MaterialPageRoute(builder: (context) => const FirstPage('1')),
       );
     });
   } // 3초 뒤 메인 페이지로 이동해라

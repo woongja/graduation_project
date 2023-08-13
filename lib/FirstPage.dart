@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'camera_page.dart';
@@ -50,9 +52,9 @@ Widget brandList(String category, context) {
 }
 
 //페이지 구성 상단 중단 하단 or 상단 중단 나눠서 widget으로 개발 후 scaffold에 구현해주기
-
 class FirstPage extends StatelessWidget {
-  const FirstPage({Key? key}) : super(key: key);
+  final String imgpath;
+  const FirstPage(this.imgpath);
 
   @override
   Widget build(BuildContext context) {
@@ -152,9 +154,13 @@ class FirstPage extends StatelessWidget {
                               height: 320,
                               color: Colors.black54,
                               child: Center(
-                                child: Container(
-                                  margin: EdgeInsets.only(left: 20, right: 20),
-                                  color: Colors.red,
+                                // child: Container(
+                                //   margin: EdgeInsets.only(left: 20, right: 20),
+                                //   color: Colors.red,
+                                //   height: 240,
+                                // ),
+                                child: Image.file(
+                                  File('$imgpath'),
                                   height: 240,
                                 ),
                               ),

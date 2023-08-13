@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_app/camera.dart';
 
 import 'landing_page.dart';
 

@@ -28,6 +28,7 @@ class PhotoPreview extends StatelessWidget {
                 primary: Colors.white),
             onPressed: () {
               final image = Image.file(File(imagePath));
+
               showDialog(
                 context: context,
                 builder: (context) {
@@ -40,14 +41,16 @@ class PhotoPreview extends StatelessWidget {
                         )),
                     actions: [
                       CupertinoDialogAction(
-                        onPressed: () {
-                          //Navigator.of(context).pop();
+                        onPressed: () async {
+                          Navigator.of(context).pop();
                           Navigator.push(
                             context,
                             PageTransition(
                                 type: PageTransitionType.leftToRight,
-                                child: FirstPage()),
+                                child: FirstPage('$imagePath')),
                           );
+
+                          print('$imagePath');
                           print('FirstPage');
                         },
                         child: Text(

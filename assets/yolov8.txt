@@ -1,0 +1,22 @@
+Hoodie
+Jacket
+Mid-lenght dress
+Pants
+Shirt
+coat
+dress
+fabric
+jacket
+jean
+m2m
+plain
+shirt
+short
+shorts
+skirt
+slacks
+suit
+sweat
+tie
+tracksuit
+tshirt
