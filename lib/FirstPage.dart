@@ -58,6 +58,7 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String img = imgpath;
     return MaterialApp(
       title: 'First Page',
       home: Scaffold(
@@ -160,7 +161,7 @@ class FirstPage extends StatelessWidget {
                                 //   height: 240,
                                 // ),
                                 child: Image.file(
-                                  File('$imgpath'),
+                                  File('$img'),
                                   height: 240,
                                 ),
                               ),

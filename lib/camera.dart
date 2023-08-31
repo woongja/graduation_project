@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -19,18 +20,17 @@ class CameraPage extends StatefulWidget {
 class _CameraPageState extends State<CameraPage> {
   File? _image;
   final picker = ImagePicker();
-
   // 비동기 처리를 통해 카메라와 갤러리에서 이미지를 가져온다.
+
   Future getImage(ImageSource imageSource) async {
     final image = await picker.pickImage(source: ImageSource.camera);
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
       _image = File(image!.path); // 가져온 이미지를 _image에 저장
     });
-    // final appDir = await syspath.getApplicationDocumentsDirectory();
-    // final fileName = path.basename(image!.path);
-    final savedfile =
-        await _image!.copy('/Users/woongjae/Desktop/gradu/project');
+
+    print("선택된 이미지 경로 : ${_image!.path}");
   }
 
   // 이미지를 보여주는 위젯
@@ -87,7 +87,7 @@ class _CameraPageState extends State<CameraPage> {
                             context,
                             PageTransition(
                                 type: PageTransitionType.leftToRight,
-                                child: FirstPage('1')),
+                                child: FirstPage('$image')),
                           );
                           print('FirstPage');
                         },
@@ -125,46 +125,60 @@ class _CameraPageState extends State<CameraPage> {
               flex: 1,
               child: showImage(context),
             ),
+            SizedBox(height: 25.0),
             // 카메라 촬영 버튼
-            TextButton(
-              child: Container(
-                height: 50,
-                width: 200,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 3,
-                        color: Colors.black,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(width: 50),
+                TextButton(
+                  child: Container(
+                    height: 50,
+                    width: 200,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 3,
+                            color: Colors.black,
+                          ),
+                        ]),
+                    child: Center(
+                      child: const Text(
+                        'Take a photo',
+                        style: TextStyle(
+                          fontFamily: 'SDS',
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
                       ),
-                    ]),
-                child: Center(
-                  child: const Text(
-                    'Take a photo',
-                    style: TextStyle(
-                      fontFamily: 'SDS',
-                      color: Colors.black,
-                      fontSize: 20,
                     ),
                   ),
+                  onPressed: () {
+                    getImage(ImageSource.camera);
+                  },
                 ),
-              ),
-              onPressed: () {
-                getImage(ImageSource.camera);
-              },
+                IconButton(
+                  onPressed: () {
+                    getImage(ImageSource.gallery);
+                  },
+                  icon: Icon(Icons.wallpaper),
+                  tooltip: 'pick Iamge',
+                ),
+              ],
             ),
           ],
         ),
         //갤러리에서 이미지를 가져오는 버튼
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.wallpaper),
-        tooltip: 'pick Iamge',
-        onPressed: () {
-          getImage(ImageSource.gallery);
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.wallpaper),
+      //   tooltip: 'pick Iamge',
+      //   onPressed: () {
+      //     getImage(ImageSource.gallery);
+      //   },
+      // ),
     );
   }
 }

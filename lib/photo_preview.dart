@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:photo_app/FirstPage.dart';
 
@@ -47,7 +48,7 @@ class PhotoPreview extends StatelessWidget {
                             context,
                             PageTransition(
                                 type: PageTransitionType.leftToRight,
-                                child: FirstPage('$imagePath')),
+                                child: FirstPage('$image')),
                           );
 
                           print('$imagePath');
